@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: australian_bureau_statistics
+    database: DATA_LAKE_AUSTRALIA
+    schema: AUSTRALIAN_BUREAU_STATISTICS
+    tables:
+      - name: gis_commonwealth_electoral_divisions_2021
+        identifier: "GIS Commonwealth Electoral Divisions 2021"
+        description: "GIS CED 2021 dataset"

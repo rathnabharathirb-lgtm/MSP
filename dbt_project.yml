@@ -2,11 +2,11 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'default'
+name: 'MSP'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'default'
+profile: 'MSP'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -22,11 +22,6 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
-vars:
-  bronze_schema: dev_bronze
-  silver_schema: silver
-  gold_schema: gold
-
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -34,19 +29,13 @@ vars:
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  DBT_Redshift:
-    # Config indicated by + and applies to all files under models/example/
-    silver:
-      dimensions:
-        +materialized: table
-        tags: ['dimensions']
-      facts:
-        +materialized: table
-        tags: ['facts']
-    gold:
-      dimensions:
-        +materialized: table
-        tags: ['dimensions']
-      facts:
-        +materialized: table
-        tags: ['facts']
+  MSP:
+    +materialized: table
+seeds:
+  MSP:
+    +schema: seeds
+    +quote_columns: true
+    +column_types:
+      loan_amount: integer
+
+  
